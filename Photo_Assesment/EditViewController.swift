@@ -15,5 +15,9 @@ class EditViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+    }
+    @IBAction func edit(_ sender: Any) {
+    }
     
 }

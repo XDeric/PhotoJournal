@@ -20,11 +20,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return CGSize(width: 340, height: 270)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fave.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? ImageCollectionViewCell {
+            
+            cell.nameLabel.text = "test"
+            cell.imageOutlet.image = UIImage(named: "noPic")
+            cell.delegate = self
+            cell.editOutlet.tag = indexPath.row
+            
             return cell
         }
         return UICollectionViewCell()
@@ -33,7 +39,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func addItemButton(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let addVC = storyboard.instantiateViewController(identifier: "addVC") as! SaveViewController
-        addVC.delegate = (self as! PhotoSaveDelegate)
+        //addVC.delegate = (self as! PhotoSaveDelegate)
         self.navigationController?.pushViewController(addVC, animated: true)
     }
     
@@ -44,20 +50,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionViewOutlet.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    func loadData(){
+        
+    }
+    
+    
 }
 
 extension ViewController: PhotoCellDelegate {
     func showActionSheet(tag: Int) {
         let optionsMenu = UIAlertController.init(title: "Options", message: "Pick an option", preferredStyle: .actionSheet)
         let favoriteAction = UIAlertAction.init(title: "Edit", style: .default) { (action) in
-            //Favorite using persistence
-            let film = self.fave[tag]
-            //print("My favorite film is \(film.title)")
+            //Favorite/Edit using persistence
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let editVC = storyboard.instantiateViewController(withIdentifier: "editVC") as! EditViewController
+            editVC.delegate = self
+            self.navigationController?.pushViewController(editVC, animated: true)
+            
         }
         let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
             //Delete from persistence
-            let film = self.fave[tag]
-            //print("I just deleted \(film.title)")
+
         }
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         optionsMenu.addAction(favoriteAction)

@@ -11,9 +11,9 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var editOutlet: UIButton!
     
     weak var delegate: PhotoCellDelegate?
-    
     
     @IBAction func editButton(_ sender: UIButton) {
         delegate?.showActionSheet(tag: sender.tag)
