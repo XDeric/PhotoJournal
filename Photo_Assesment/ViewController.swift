@@ -9,9 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    
     @IBOutlet weak var collectionViewOutlet: UICollectionView!
     var fave = [Favorite](){
-        didSet{
+        didSet {
             collectionViewOutlet.reloadData()
         }
     }
@@ -20,14 +22,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return CGSize(width: 340, height: 270)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return fave.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? ImageCollectionViewCell {
             
-            cell.nameLabel.text = "test"
-            cell.imageOutlet.image = UIImage(named: "noPic")
+            cell.nameLabel.text = fave[indexPath.row].name
+            cell.imageOutlet.image = UIImage(data: fave[indexPath.row].image)
             cell.delegate = self
             cell.editOutlet.tag = indexPath.row
             
@@ -39,7 +41,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func addItemButton(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let addVC = storyboard.instantiateViewController(identifier: "addVC") as! SaveViewController
-        //addVC.delegate = (self as! PhotoSaveDelegate)
         self.navigationController?.pushViewController(addVC, animated: true)
     }
     
@@ -48,11 +49,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         collectionViewOutlet.delegate = self
         collectionViewOutlet.dataSource = self
-        // Do any additional setup after loading the view.
+//      loadData()
     }
     
-    func loadData(){
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
+    func loadData() {
+        do {
+            fave = try SavePersistenceHelper.manager.getFavorite()
+        } catch {
+            print(error)
+        }
     }
     
     

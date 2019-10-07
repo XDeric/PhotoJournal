@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 struct Favorite: Codable {
     let name: String
+    let image: Data
 }

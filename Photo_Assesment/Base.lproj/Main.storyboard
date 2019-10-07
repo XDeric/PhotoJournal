@@ -99,7 +99,6 @@
         <!--Edit View Controller-->
         <scene sceneID="tYC-w9-7P7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BMV-NI-Pv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="editVC" id="8mh-kj-kZ0" customClass="EditViewController" customModule="Photo_Assesment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="shD-gw-CJK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -110,6 +109,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editName:" destination="8mh-kj-kZ0" eventType="editingDidEnd" id="jeH-ex-6T5"/>
+                                </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSP-Oh-heA">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
@@ -129,6 +131,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="editSave:" destination="8mh-kj-kZ0" eventType="touchUpInside" id="Ssk-VD-pXR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -136,6 +141,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pk9-h5-hwu"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BMV-NI-Pv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3647.826086956522" y="112.5"/>
         </scene>
@@ -147,7 +153,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWM-1z-RLj">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name and Enter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWM-1z-RLj">
                                 <rect key="frame" x="20" y="98" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -157,7 +163,11 @@
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Photo" image="photo" catalog="system" id="gAw-NJ-gkI"/>
+                                    <barButtonItem title="Photo" image="photo" catalog="system" id="gAw-NJ-gkI">
+                                        <connections>
+                                            <action selector="pickImage:" destination="MeX-J4-dnz" id="69c-cn-Ly1"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AFk-Qu-FJ8"/>
                                     <barButtonItem title="Item" image="camera.fill" catalog="system" id="DTq-9q-gSx"/>
                                 </items>
@@ -171,12 +181,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="addSave:" destination="MeX-J4-dnz" eventType="touchUpInside" id="ScT-bd-mUY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="nt9-Z9-AtG"/>
                     </view>
                     <navigationItem key="navigationItem" id="vZ6-Sx-2wa"/>
+                    <connections>
+                        <outlet property="imageOutlet" destination="dUv-Yn-QUO" id="XNw-fl-HXW"/>
+                        <outlet property="textOutlet" destination="hWM-1z-RLj" id="c19-mW-0OD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0lA-rV-iCK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,12 +12,14 @@ class EditViewController: UIViewController {
     var delegate: PhotoCellDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     }
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
+    
+    @IBAction func editSave(_ sender: UIButton) {
     }
-    @IBAction func edit(_ sender: Any) {
+    
+    @IBAction func editName(_ sender: UITextField) {
     }
+    
     
 }
