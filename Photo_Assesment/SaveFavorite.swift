@@ -23,7 +23,8 @@ struct SavePersistenceHelper {
         return try persistenceHelper.replace(elements: replace, index: index)
     }
     
-    func deleteFavorite(withID: Int) throws {
+    func deleteFavorite(delete: Favorite, withID: Int) throws {
+        return try persistenceHelper.delete(elements: delete, index: withID)
     }
 
     private let persistenceHelper = PersistenceHelper<Favorite>(fileName: "favorites.plist")

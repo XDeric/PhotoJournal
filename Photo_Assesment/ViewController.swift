@@ -87,7 +87,14 @@ extension ViewController: PhotoCellDelegate {
             //Delete from persistence
             let photo = self.fave[tag]
             self.fave.remove(at: tag)
-
+            let newSave = Favorite(name: photo.name, image: photo.image)
+            DispatchQueue.global(qos: .utility).async {
+                try? SavePersistenceHelper.manager.deleteFavorite(delete: newSave, withID: tag)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            
         }
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         optionsMenu.addAction(favoriteAction)
