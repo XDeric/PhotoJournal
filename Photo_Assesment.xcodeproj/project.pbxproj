@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		853AD202234C4095002D9655 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853AD201234C4095002D9655 /* SettingViewController.swift */; };
+		853AD20A234C4211002D9655 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853AD209234C4211002D9655 /* Settings.swift */; };
 		8576B1D72347C6320073A0F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576B1D62347C6320073A0F6 /* AppDelegate.swift */; };
 		8576B1D92347C6320073A0F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576B1D82347C6320073A0F6 /* SceneDelegate.swift */; };
 		8576B1DB2347C6320073A0F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576B1DA2347C6320073A0F6 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		853AD201234C4095002D9655 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		853AD209234C4211002D9655 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8576B1D32347C6320073A0F6 /* Photo_Assesment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo_Assesment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8576B1D62347C6320073A0F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8576B1D82347C6320073A0F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		853AD203234C4163002D9655 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8576B1FB2347CB090073A0F6 /* SaveManager.swift */,
+				8576B1FD2347CB750073A0F6 /* SaveFavorite.swift */,
+				8576B203234B70470073A0F6 /* Favorites.swift */,
+				853AD209234C4211002D9655 /* Settings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		853AD204234C4181002D9655 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8576B1DA2347C6320073A0F6 /* ViewController.swift */,
+				8576B1FF2347D5730073A0F6 /* SaveViewController.swift */,
+				8576B2012347D57E0073A0F6 /* EditViewController.swift */,
+				853AD201234C4095002D9655 /* SettingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8576B1CA2347C6320073A0F6 = {
 			isa = PBXGroup;
 			children = (
@@ -94,15 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				8576B1F82347C7840073A0F6 /* Supporting Files */,
-				8576B1FB2347CB090073A0F6 /* SaveManager.swift */,
-				8576B1FD2347CB750073A0F6 /* SaveFavorite.swift */,
-				8576B203234B70470073A0F6 /* Favorites.swift */,
-				8576B1F92347C7B50073A0F6 /* ImageCollectionViewCell.swift */,
-				8576B1DA2347C6320073A0F6 /* ViewController.swift */,
-				8576B1FF2347D5730073A0F6 /* SaveViewController.swift */,
-				8576B2012347D57E0073A0F6 /* EditViewController.swift */,
+				853AD203234C4163002D9655 /* Model */,
+				853AD204234C4181002D9655 /* Controller */,
 				8576B1DC2347C6320073A0F6 /* Main.storyboard */,
 				8576B205234BA5BD0073A0F6 /* Protocol.swift */,
+				8576B1F92347C7B50073A0F6 /* ImageCollectionViewCell.swift */,
 				8576B1E42347C6330073A0F6 /* Info.plist */,
 			);
 			path = Photo_Assesment;
@@ -230,10 +252,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8576B204234B70470073A0F6 /* Favorites.swift in Sources */,
+				853AD202234C4095002D9655 /* SettingViewController.swift in Sources */,
 				8576B2022347D57E0073A0F6 /* EditViewController.swift in Sources */,
 				8576B1DB2347C6320073A0F6 /* ViewController.swift in Sources */,
 				8576B1D72347C6320073A0F6 /* AppDelegate.swift in Sources */,
 				8576B1FE2347CB750073A0F6 /* SaveFavorite.swift in Sources */,
+				853AD20A234C4211002D9655 /* Settings.swift in Sources */,
 				8576B1FA2347C7B50073A0F6 /* ImageCollectionViewCell.swift in Sources */,
 				8576B1D92347C6320073A0F6 /* SceneDelegate.swift in Sources */,
 				8576B1FC2347CB090073A0F6 /* SaveManager.swift in Sources */,

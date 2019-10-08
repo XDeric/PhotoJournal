@@ -44,6 +44,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.navigationController?.pushViewController(addVC, animated: true)
     }
     
+    @IBAction func settings(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let setVC = storyboard.instantiateViewController(identifier: "setVC") as! SettingViewController
+        self.navigationController?.pushViewController(setVC, animated: true)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,19 +71,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             print(error)
         }
     }
-    
-    
 }
+
+
 
 extension ViewController: PhotoCellDelegate {
     func showActionSheet(tag: Int) {
         let optionsMenu = UIAlertController.init(title: "Options", message: "Pick an option", preferredStyle: .actionSheet)
         let favoriteAction = UIAlertAction.init(title: "Edit", style: .default) { (action) in
             //Favorite/Edit using persistence
+            let edit = self.fave[tag]
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let editVC = storyboard.instantiateViewController(withIdentifier: "editVC") as! EditViewController
             editVC.delegate = self
+            editVC.picture = edit.image
+            editVC.name = edit.name
             editVC.index = tag
+            editVC.modalPresentationStyle = .currentContext
             self.navigationController?.pushViewController(editVC, animated: true)
             
         }
@@ -94,7 +105,6 @@ extension ViewController: PhotoCellDelegate {
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-            
         }
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         optionsMenu.addAction(favoriteAction)

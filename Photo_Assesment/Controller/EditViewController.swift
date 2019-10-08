@@ -11,6 +11,8 @@ import UIKit
 class EditViewController: UIViewController, UITextFieldDelegate {
     var delegate: PhotoCellDelegate?
     var index: Int?
+    var picture: Data?
+    var name: String?
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var imageOutlet: UIImageView!
     
@@ -33,9 +35,9 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func editSave(_ sender: UIButton) {
-        let newSave = Favorite(name: text, image: ((image.pngData() ?? UIImage(named: "noPic")!.pngData())!))
+        let newSave = Favorite(name: name!, image: picture!)
         DispatchQueue.global(qos: .utility).async {
-            try? SavePersistenceHelper.manager.replaceFavorite(replace: newSave, index: 1)
+            try? SavePersistenceHelper.manager.replaceFavorite(replace: newSave, index: self.index!)
             DispatchQueue.main.async {
                 self.navigationController?.popViewController(animated: true)
             }
