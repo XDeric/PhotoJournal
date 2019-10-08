@@ -76,16 +76,23 @@ extension ViewController: PhotoCellDelegate {
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let editVC = storyboard.instantiateViewController(withIdentifier: "editVC") as! EditViewController
             editVC.delegate = self
+            editVC.index = tag
             self.navigationController?.pushViewController(editVC, animated: true)
             
         }
+        let shareAction = UIAlertAction.init(title: "Share", style: .default) { (action) in
+            //share it
+        }
         let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
             //Delete from persistence
+            let photo = self.fave[tag]
+            self.fave.remove(at: tag)
 
         }
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         optionsMenu.addAction(favoriteAction)
         optionsMenu.addAction(deleteAction)
+        optionsMenu.addAction(shareAction)
         optionsMenu.addAction(cancelAction)
         present(optionsMenu, animated: true, completion: nil)
     }

@@ -109,15 +109,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="editName:" destination="8mh-kj-kZ0" eventType="editingDidEnd" id="jeH-ex-6T5"/>
-                                </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSP-Oh-heA">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Item" image="photo" catalog="system" id="too-yD-of8"/>
+                                    <barButtonItem title="Item" image="photo" catalog="system" id="too-yD-of8">
+                                        <connections>
+                                            <action selector="pickImage:" destination="8mh-kj-kZ0" id="q4F-Kk-4cf"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tdu-f9-8Ns"/>
                                     <barButtonItem title="Item" image="camera.fill" catalog="system" id="1pn-TU-VhC"/>
                                 </items>
@@ -140,6 +141,10 @@
                         <viewLayoutGuide key="safeArea" id="IUp-Ye-Iny"/>
                     </view>
                     <navigationItem key="navigationItem" id="pk9-h5-hwu"/>
+                    <connections>
+                        <outlet property="imageOutlet" destination="coP-OQ-Rb8" id="2Nq-Xe-6wz"/>
+                        <outlet property="textFieldOutlet" destination="nmn-D1-8Dh" id="umn-FX-ZHa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMV-NI-Pv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

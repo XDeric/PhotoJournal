@@ -19,6 +19,10 @@ struct SavePersistenceHelper {
         return try persistenceHelper.getObjects()
     }
     
+    func replaceFavorite(replace: Favorite, index: Int) throws {
+        return try persistenceHelper.replace(elements: replace, index: index)
+    }
+    
     func deleteFavorite(withID: Int) throws {
     }
 
