@@ -35,5 +35,23 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
-
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let segueIdentifier = segue.identifier else { fatalError("No identifier in segue") }
+        
+        switch segueIdentifier {
+        case "settingSegue" :
+            guard let setVC = segue.destination as? ViewController else {
+                fatalError("Unexpected segue VC")
+            }
+            guard let selectedIndexPath = tableViewOutlet.indexPathForSelectedRow else {
+                fatalError("No row was selected")
+            }
+            setVC.colors = color[selectedIndexPath.row]
+        default:
+            fatalError("Nice Try")
+        }
+    }
 }

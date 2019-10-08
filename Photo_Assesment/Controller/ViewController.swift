@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             collectionViewOutlet.reloadData()
         }
     }
+    var colors: Setting?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 340, height: 270)
@@ -26,8 +27,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let texture = colors?.color
         if let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? ImageCollectionViewCell {
             
+            cell.backgroundColor = texture
             cell.nameLabel.text = fave[indexPath.row].name
             cell.imageOutlet.image = UIImage(data: fave[indexPath.row].image)
             cell.delegate = self
@@ -57,6 +60,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionViewOutlet.delegate = self
         collectionViewOutlet.dataSource = self
 //      loadData()
+        self.view.backgroundColor = colors?.color
     }
     
     override func viewWillAppear(_ animated: Bool) {
